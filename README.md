@@ -22,16 +22,19 @@ as the `Cargo.lock` in those repositories ‒ ensuring that the last
 known-to-work version of the dependencies are used.
 
 The latest confirmed working Substrate commit which will then be used is
-[249dbbba6a1a277a3098c2a5b302645da16451ad](https://github.com/paritytech/substrate/tree/249dbbba6a1a277a3098c2a5b302645da16451ad).
+[3cad018bb4d8129f7ff199c3a5bb63ac78b19d6b](https://github.com/paritytech/substrate/tree/3cad018bb4d8129f7ff199c3a5bb63ac78b19d6b).
 
 ## Usage
 
 To run a local dev node execute
+
+```bash
+substrate-contracts-node --dev
 ```
-substrate-contracts-node --dev --tmp
-```
-The `--tmp` implies that a new chain will be created each time the command
-is executed. If you want to persist chain state across runs leave it out.
+
+A new chain in temporary directory will be created each time the command is executed. This is the
+default for `--dev` chain specs. If you want to persist chain state across runs you need to
+specify a directory with `--base-path`.
 
 ### Show only Errors and Contract Debug Output
 

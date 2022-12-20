@@ -1,6 +1,6 @@
 [package]
 name = "contracts-node"
-version = "0.5.0"
+version = "0.12.0"
 authors = ["Parity Technologies <admin@parity.io>"]
 description = "Substrate node configured for smart contracts via `pallet-contracts`."
 edition = "2021"
@@ -18,7 +18,7 @@ name = "substrate-contracts-node"
 path = "src/main.rs"
 
 [dependencies]
-structopt = "0.3.25"
+clap = { version = "3.1.6", features = ["derive"] }
 
 sc-cli = { git = "https://github.com/paritytech/substrate", package = "sc-cli", features = ["wasmtime"] }
 sp-core = { git = "https://github.com/paritytech/substrate", package = "sp-core" }
@@ -29,12 +29,9 @@ sc-keystore = { git = "https://github.com/paritytech/substrate", package = "sc-k
 sp-inherents = { git = "https://github.com/paritytech/substrate", package = "sp-inherents" }
 sc-transaction-pool = { git = "https://github.com/paritytech/substrate", package = "sc-transaction-pool" }
 sc-transaction-pool-api = { git = "https://github.com/paritytech/substrate", package = "sc-transaction-pool-api" }
-sc-consensus-aura = { git = "https://github.com/paritytech/substrate", package = "sc-consensus-aura" }
-sp-consensus-aura = { git = "https://github.com/paritytech/substrate", package = "sp-consensus-aura" }
 sp-consensus = { git = "https://github.com/paritytech/substrate", package = "sp-consensus" }
 sc-consensus = { git = "https://github.com/paritytech/substrate", package = "sc-consensus" }
-sc-finality-grandpa = { git = "https://github.com/paritytech/substrate", package = "sc-finality-grandpa" }
-sp-finality-grandpa = { git = "https://github.com/paritytech/substrate", package = "sp-finality-grandpa" }
+sc-consensus-manual-seal = { git = "https://github.com/paritytech/substrate", package = "sc-consensus-manual-seal" }
 sc-client-api = { git = "https://github.com/paritytech/substrate", package = "sc-client-api" }
 sp-runtime = { git = "https://github.com/paritytech/substrate", package = "sp-runtime" }
 sp-timestamp = { git = "https://github.com/paritytech/substrate", package = "sp-timestamp" }
@@ -57,6 +54,9 @@ frame-benchmarking-cli = { git = "https://github.com/paritytech/substrate", pack
 
 contracts-node-runtime = { path = "../runtime" }
 
+# CLI-specific dependencies
+try-runtime-cli = { git = "https://github.com/paritytech/substrate", package = "try-runtime-cli", optional = true }
+
 [build-dependencies]
 substrate-build-script-utils = { git = "https://github.com/paritytech/substrate", package = "substrate-build-script-utils" }
 
@@ -65,3 +65,6 @@ default = []
 runtime-benchmarks = [
 	"contracts-node-runtime/runtime-benchmarks",
 ]
+# Enable features that allow the runtime to be tried and debugged. Name might be subject to change
+# in the near future.
+try-runtime = ["contracts-node-runtime/try-runtime", "try-runtime-cli"]
