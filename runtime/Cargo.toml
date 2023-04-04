@@ -44,7 +44,7 @@ frame-system-rpc-runtime-api = { git = "https://github.com/paritytech/substrate"
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", package = "pallet-transaction-payment-rpc-runtime-api", default-features = false, branch = "polkadot-v0.9.37" }
 
 # Contracts specific packages
-pallet-contracts = { git = "https://github.com/paritytech/substrate", package = "pallet-contracts", default-features = false, branch = "polkadot-v0.9.37" }
+pallet-contracts = { git = "https://github.com/prosopo/substrate", package = "pallet-contracts", default-features = false, branch = "polkadot-v0.9.37-debug" }
 pallet-contracts-primitives = { git = "https://github.com/paritytech/substrate", package = "pallet-contracts-primitives", default-features = false, branch = "polkadot-v0.9.37" }
 
 # Chain extension
