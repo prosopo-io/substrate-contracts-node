@@ -24,6 +24,12 @@ where
 }
 
 pub fn development_config() -> Result<ChainSpec, String> {
+	// Give your base currency a unit name and decimal places
+	let mut properties = sc_chain_spec::Properties::new();
+	properties.insert("tokenSymbol".into(), "UNIT".into());
+	properties.insert("tokenDecimals".into(), 18.into());
+	properties.insert("ss58Format".into(), 42.into());
+
 	Ok(ChainSpec::builder(
 		WASM_BINARY.ok_or_else(|| "Development wasm not available".to_string())?,
 		None,
@@ -52,6 +58,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
 		],
 		true,
 	))
+	.with_properties(properties)
 	.build())
 }
 
