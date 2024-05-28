@@ -134,7 +134,7 @@ const CONTRACTS_EVENTS: pallet_contracts::CollectEvents =
 	pallet_contracts::CollectEvents::UnsafeCollect;
 
 // Unit = the base number of indivisible units for balances
-const MILLIUNIT: Balance = 1_000_000_000;
+const MILLIUNIT: Balance = 1_000_000_000_000_000;
 pub const EXISTENTIAL_DEPOSIT: Balance = MILLIUNIT;
 
 impl pallet_insecure_randomness_collective_flip::Config for Runtime {}
